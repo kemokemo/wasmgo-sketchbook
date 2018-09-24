@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="wasm_exec.js"></script>
+    <title>DOM control</title>
+    <script>
+			const go = new Go();
+			WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+				go.run(result.instance);
+			});
+		</script>
+  </head>
+  <body>
+    <button id="myButton" type="button" name="button">press me!</button>
+  </body>
+</html>
